@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ab_project.Models.Training>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Our Training Catalog</h1>
+    <p class="lead">Explore our wide range of training courses.</p>
+</div>
+
+@if (Model.Any())
+{
+    <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var training in Model)
+            {
+                <tr>
+                    <td>@training.Name</td>
+                    <td>@training.Author</td>
+                    <td>@(training.Category?.Name ?? "Uncategorized")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-info" role="alert">
+        No trainings are currently available. Please check back later.
+    </div>
+}
+
+    
