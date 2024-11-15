@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "4tpJYJDLFE8=",
+  "dgSpecHash": "ETxSfbaNUMA=",
   "success": true,
   "projectFilePath": "/Users/sirbia/AB/AB2/ab_project/ab_project.csproj",
   "expectedPackageFiles": [
+    "/Users/sirbia/.nuget/packages/awssdk.core/3.7.400.50/awssdk.core.3.7.400.50.nupkg.sha512",
+    "/Users/sirbia/.nuget/packages/awssdk.secretsmanager/3.7.400.50/awssdk.secretsmanager.3.7.400.50.nupkg.sha512",
     "/Users/sirbia/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/sirbia/.nuget/packages/microsoft.bcl.asyncinterfaces/6.0.0/microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "/Users/sirbia/.nuget/packages/microsoft.codeanalysis.analyzers/3.3.3/microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",

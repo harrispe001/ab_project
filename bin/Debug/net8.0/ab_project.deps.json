@@ -8,11 +8,31 @@
     ".NETCoreApp,Version=v8.0": {
       "ab_project/1.0.0": {
         "dependencies": {
+          "AWSSDK.SecretsManager": "3.7.400.50",
           "Microsoft.EntityFrameworkCore.Tools": "8.0.0",
           "Pomelo.EntityFrameworkCore.MySql": "8.0.0"
         },
         "runtime": {
           "ab_project.dll": {}
+        }
+      },
+      "AWSSDK.Core/3.7.400.50": {
+        "runtime": {
+          "lib/net8.0/AWSSDK.Core.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.400.50"
+          }
+        }
+      },
+      "AWSSDK.SecretsManager/3.7.400.50": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.400.50"
+        },
+        "runtime": {
+          "lib/net8.0/AWSSDK.SecretsManager.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.400.50"
+          }
         }
       },
       "Humanizer.Core/2.14.1": {
@@ -496,6 +516,20 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "AWSSDK.Core/3.7.400.50": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TlxWcUFQdBcdvYbS9159jhwMrO/1zEjEfqlOTYmD47Svs3ecK+aNrtfOhpY/8xc6AjPUGLLG95iJgzehQXcwrg==",
+      "path": "awssdk.core/3.7.400.50",
+      "hashPath": "awssdk.core.3.7.400.50.nupkg.sha512"
+    },
+    "AWSSDK.SecretsManager/3.7.400.50": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9cE18otdy7f9btqJakg1VW8i6zPod6L1DXdh4y/0RR8/KSbob23Jb/HpmUgLl6p+MYEnz2FWPbgW92CZU8Isyw==",
+      "path": "awssdk.secretsmanager/3.7.400.50",
+      "hashPath": "awssdk.secretsmanager.3.7.400.50.nupkg.sha512"
     },
     "Humanizer.Core/2.14.1": {
       "type": "package",

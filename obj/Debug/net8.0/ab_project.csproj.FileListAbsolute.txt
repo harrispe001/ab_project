@@ -102,3 +102,5 @@
 /Users/sirbia/AB/AB2/ab_project/obj/Debug/net8.0/ab_project.pdb
 /Users/sirbia/AB/AB2/ab_project/obj/Debug/net8.0/ab_project.genruntimeconfig.cache
 /Users/sirbia/AB/AB2/ab_project/obj/Debug/net8.0/ref/ab_project.dll
+/Users/sirbia/AB/AB2/ab_project/bin/Debug/net8.0/AWSSDK.Core.dll
+/Users/sirbia/AB/AB2/ab_project/bin/Debug/net8.0/AWSSDK.SecretsManager.dll
