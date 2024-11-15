@@ -20,7 +20,7 @@ builder.Services.AddHealthChecks();
 // Function to get secret
 string GetSecret()
 {
-    string secretName = "ab_project/dbcredentials_dev";
+    string secretName = "ab_project/dbcredentials";
     string region = "us-west-2";
 
     IAmazonSecretsManager client = new AmazonSecretsManagerClient(RegionEndpoint.GetBySystemName(region));
