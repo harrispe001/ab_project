@@ -17,7 +17,7 @@ builder.Services.AddControllersWithViews();
 string GetSecret()
 {
     string secretName = "ab_project/dbcredentials";
-    string region = "us-east-1";
+    string region = "us-west-2";
 
     IAmazonSecretsManager client = new AmazonSecretsManagerClient(RegionEndpoint.GetBySystemName(region));
 

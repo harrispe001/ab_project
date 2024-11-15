@@ -1,0 +1,63 @@
+#!/bin/bash
+
+yum install git -y
+yum install dotnet -y
+yum install nginx -y
+
+# Configure nginx
+tee /etc/nginx/conf.d/myapp.conf > /dev/null <<EOT
+server {
+    listen 80 default_server;
+
+    location / {
+        proxy_pass http://localhost:5080;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade \$http_upgrade;
+        proxy_set_header Connection keep-alive;
+        proxy_set_header Host \$host;
+        proxy_cache_bypass \$http_upgrade;
+        proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto \$scheme;
+    }
+}
+EOT
+
+# Clone the repository
+mkdir -p /test
+cd /test
+git clone https://github.com/harrispe001/ab_project.git
+
+# Set correct permissions
+chown -R ec2-user:ec2-user /test/ab_project
+chmod -R 755 /test/ab_project
+
+# Build the application
+cd /test/ab_project
+-u ec2-user dotnet build
+
+# Set up the systemd service
+tee /etc/systemd/system/dotnet-app.service > /dev/null <<EOT
+[Unit]
+Description=.NET Web App
+
+[Service]
+WorkingDirectory=/test/ab_project
+ExecStart=/usr/bin/dotnet run
+Restart=always
+RestartSec=10
+KillSignal=SIGINT
+SyslogIdentifier=dotnet-app
+User=ec2-user
+Environment=ASPNETCORE_ENVIRONMENT=Production
+
+[Install]
+WantedBy=multi-user.target
+EOT
+
+# Reload systemd, enable and start the services
+systemctl daemon-reload
+systemctl enable dotnet-app.service
+systemctl start dotnet-app.service
+
+systemctl enable nginx
+systemctl start nginx
