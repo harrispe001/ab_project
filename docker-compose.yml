@@ -6,7 +6,7 @@ services:
    ports:
      - "3306:3306"
    environment:
-     - MYSQL_ROOT_PASSWORD=Happ1n3ss
+     - MYSQL_ROOT_PASSWORD=nf5*AHfGexv4O~LVT_[?Ku<Pm)Qk
      - MYSQL_DATABASE=pinkFlamingosDatabase
    volumes:
      - /Users/sirbia/Desktop/mysql/db:/var/lib/mysql 
