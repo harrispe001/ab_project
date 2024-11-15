@@ -15,10 +15,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddHealthChecks();
+
 // Function to get secret
 string GetSecret()
 {
-    string secretName = "ab_project/dbcredentials";
+    string secretName = "ab_project/dbcredentials_dev";
     string region = "us-west-2";
 
     IAmazonSecretsManager client = new AmazonSecretsManagerClient(RegionEndpoint.GetBySystemName(region));
@@ -69,7 +71,6 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
