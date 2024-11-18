@@ -5,6 +5,9 @@ namespace ab_project.Repositories
     public interface ITrainingRepository
     {
         Task<IEnumerable<Training>> GetAllTrainingsAsync();
-        // Add other methods as needed
+        Task<Training> GetTrainingByIdAsync(int id);
+        Task AddTrainingAsync(Training training);
+        Task UpdateTrainingAsync(Training training);
+        Task DeleteTrainingAsync(int id);
     }
 }
