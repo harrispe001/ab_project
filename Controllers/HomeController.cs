@@ -1,4 +1,7 @@
+using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
+using System.Net.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -88,6 +91,40 @@ namespace ab_project.Controllers
         {
             await _trainingService.DeleteTrainingAsync(id);
             return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet("/instance")]
+        public async Task<IActionResult> GetInstanceInfo()
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    client.Timeout = TimeSpan.FromSeconds(5);
+                    
+                    // Get instance ID
+                    var instanceId = await client.GetStringAsync("http://169.254.169.254/latest/meta-data/instance-id");
+                    
+                    // Get availability zone
+                    var availabilityZone = await client.GetStringAsync("http://169.254.169.254/latest/meta-data/placement/availability-zone");
+                    
+                    // Region is AZ minus the last character
+                    var region = availabilityZone[..^1];
+
+                    return Json(new { 
+                        InstanceId = instanceId,
+                        AvailabilityZone = availabilityZone,
+                        Region = region
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { 
+                    Error = "Could not retrieve instance metadata",
+                    Details = ex.Message 
+                });
+            }
         }
 
         public IActionResult Privacy()
