@@ -108,22 +108,20 @@ namespace ab_project.Controllers
                     // Region is AZ minus the last character
                     var region = availabilityZone[..^1];
 
-                    return Json(new { 
-                        InstanceId = instanceId,
-                        AvailabilityZone = availabilityZone,
-                        Region = region
-                    });
+                    ViewBag.InstanceId = instanceId;
+                    ViewBag.AvailabilityZone = availabilityZone;
+                    ViewBag.Region = region;
+
+                    return View();
                 }
             }
             catch (Exception ex)
             {
-                return Json(new { 
-                    Error = "Could not retrieve instance metadata",
-                    Details = ex.Message 
-                });
+                ViewBag.Error = "Could not retrieve instance metadata";
+                ViewBag.ErrorDetails = ex.Message;
+                return View("Error");
             }
         }
-
         public IActionResult Privacy()
         {
             return View();
