@@ -41,7 +41,6 @@ namespace ab_project.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Training training)
         {
             ModelState.Remove("Category");
@@ -67,7 +66,6 @@ namespace ab_project.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Training training)
         {
             if (id != training.TrainingId)
@@ -86,7 +84,6 @@ namespace ab_project.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
             await _trainingService.DeleteTrainingAsync(id);
